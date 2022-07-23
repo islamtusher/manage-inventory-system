@@ -1,10 +1,21 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import auth from '../../additional/firebase.config';
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    if (user || error) {
+        console.log(user, error);
+    }
     const onSubmit = (data) => {
-        
+        signInWithEmailAndPassword(data?.email, data?.password)
     }
     
     return (
