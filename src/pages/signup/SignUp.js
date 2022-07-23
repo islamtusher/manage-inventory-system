@@ -4,13 +4,16 @@ import { useForm } from 'react-hook-form';
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
 
+    const onSubmit = (data) => {
+     console.log(data);   
+    }
 
     return (
         <div>
-            <div class="card w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-                <div class="card-body pt-3">
+            <div className="card w-full max-w-sm mx-auto shadow-2xl bg-base-100">
+                <div className="card-body pt-3">
 
-                    <form className='flex flex-col mt-4'>
+                    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text text-lg">Name</span>
