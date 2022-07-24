@@ -14,8 +14,9 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    if (user || error) {
+    if (user && !error) {
         console.log(user, error);
+        navigate('/')
     }
     const onSubmit = (data) => {
         signInWithEmailAndPassword(data?.email, data?.password)

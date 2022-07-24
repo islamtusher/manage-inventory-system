@@ -12,11 +12,9 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword,user,loading, creatUserError] = useCreateUserWithEmailAndPassword(auth); // react firebase hooks
     const [updateProfile, updating, error] = useUpdateProfile(auth);
     
-    if (error) {
-        console.log( error);
-    }
-    if (user) {
-        console.log(user);
+    if (user && !error) {
+        console.log(user, error);
+        navigate('/')
     }
     const onSubmit = async(data) => {
         console.log(data);
