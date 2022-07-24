@@ -1,9 +1,12 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../additional/firebase.config';
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
     const [
         signInWithEmailAndPassword,
@@ -60,10 +63,10 @@ const Login = () => {
                             
                         </div>
 
-                        <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >SIGN UP</button>
+                        <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >LOG IN</button>
                         <p className='text-center text-sm '>
                             New User? 
-                            <span className='text-primary cursor-pointer'> Create New Account</span>
+                            <span onClick={() => navigate('/signup')} className='text-primary cursor-pointer'> Create New Account</span>
                         </p>
                     </form>  
                     <div className="divider">OR</div>
