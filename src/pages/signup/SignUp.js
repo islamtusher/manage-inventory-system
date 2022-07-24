@@ -2,9 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import auth from '../../additional/firebase.config';
 import {useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
 
     const [createUserWithEmailAndPassword,user,loading, creatUserError] = useCreateUserWithEmailAndPassword(auth); // react firebase hooks
@@ -98,7 +100,7 @@ const SignUp = () => {
                         <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >SIGN UP</button>
                         <p className='text-center text-sm '>
                             Allready Registered?
-                            <span className='text-primary cursor-pointer'> Please Log In</span>
+                            <span onClick={() => navigate('/login')} className='text-primary cursor-pointer'> Please Log In</span>
                         </p>
                     </form>  
                     
